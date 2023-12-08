@@ -1,0 +1,65 @@
+[META]
+T=300
+GROUP_NUM=2
+EVAL_STEP = 1
+
+[PRE_RNN]
+TRAIN_BATCH_SIZE = 512
+EMB_DIM = 50
+NS_LOSS_WEI = 1.0
+LOSS_REG_NEG = -100.0
+LOSS_REG_1SUM = 100.0
+UF_COUNT = [5950, 2, 7, 21, 3439]
+USER_COUNT = 5950
+ITEM_COUNT = 2513
+ITEM_CAT = 18
+MU_DIM = 2
+NS_WEI = [1, 5]
+USE_CE_NSLOSS = 1
+PHI_SA_NORMALIZE = 1
+model_path = ./ml_1m_rnn_models/ml_1m_pretrained_rnn_ckpt
+
+
+[GROUP1]
+user_file = data/ml_1m_diff2week/user_df_g0_kmeans_v2.pkl
+beta = 10
+inT = 50
+
+
+[GROUP0]
+user_file = data/ml_1m_diff2week/user_df_g1_kmeans_v2.pkl
+beta = 10
+inT = 50
+
+[MDP]
+DIM = 50
+warmT = 5
+Q_ALPHA = 0.1
+H = 10
+B_BETA = 0.001
+EPSILION = 0.05
+K = 2
+REWARD_THRE = 0.4 
+LEAVE_STATE = 1
+LAMBDA = 1
+GAMMA = 0.9
+rewards_offsets=[0, 0]
+
+
+[RL_PO]
+DIM = 50
+PI_LR = 0.01
+C_LR = 0
+CLAMBDA_MAX = 200
+BETA3 = 0.01
+POLICY_EPOCHS = [1,10]
+W = 1
+LAMBDA = 0.0
+V = 0.07
+ITEM_COUNT = 2513
+TEMP = 1.0
+ETA = 0.05
+S = 1000
+Q_min_clip = -1
+Q_max_clip = 3
+

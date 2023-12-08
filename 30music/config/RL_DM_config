@@ -1,0 +1,60 @@
+[META]
+T=300
+GROUP_NUM=2
+EVAL_STEP = 1
+
+[PRE_RNN]
+TRAIN_BATCH_SIZE = 1024
+EMB_DIM = 50
+NS_LOSS_WEI = 1.0
+UF_COUNT = [6170, 2, 10, 127, 2]
+USER_COUNT = 6170
+ITEM_COUNT = 8689
+IF_COUNT = [8689, 1961, 3040, 67]
+MU_DIM = 2
+NS_WEI = [1, 5]
+USE_CE_NSLOSS = 1
+PHI_SA_NORMALIZE = 1
+MODEL_PATH = 30music_rnnmodels/30music_pretrained_rnn_ckpt
+
+
+[GROUP0]
+user_file = data/30music_new/user_df_g0_kmeans.pkl
+beta = 10
+inT = 50
+
+
+[GROUP1]
+user_file = data/30music_new/user_df_g1_kmeans.pkl
+beta = 10
+inT = 50
+
+[MDP]
+DIM = 50
+warmT= 5
+Q_ALPHA = 0.1
+H = 10
+B_BETA = 0
+EPSILION = 0.05
+K = 1
+REWARD_THRE = 0.35
+LEAVE_STATE = 1
+LAMBDA = 1
+GAMMA = 0.9
+rewards_offsets=[0, 0]
+
+
+
+[RL_DM]
+DIM = 50
+PI_LR = 0.01
+POLICY_EPOCHS = [1,10]
+W = 1
+LAMBDA = 1.0
+V = 0.07
+ITEM_COUNT = 8689
+TEMP = 1.0
+ETA = 0.05
+S = 1000
+Q_min_clip = -3
+Q_max_clip = 3
